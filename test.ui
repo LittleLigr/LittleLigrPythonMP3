@@ -1,0 +1,761 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.2">
+  <object class="tk.Toplevel" id="mainFrame">
+    <property name="background">#00ff00</property>
+    <property name="container">false</property>
+    <property name="height">680</property>
+    <property name="iconphoto">32247140.gif</property>
+    <property name="minsize">1024|600</property>
+    <property name="title" translatable="yes">LittleLigr unremarkable mp3 player</property>
+    <property name="width">1154</property>
+    <child>
+      <object class="tk.Frame" id="frame12">
+        <property name="background">#dddbec</property>
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="place">
+          <property name="anchor">nw</property>
+          <property name="relheight">1.0</property>
+          <property name="relwidth">1.0</property>
+          <property name="x">0</property>
+          <property name="y">0</property>
+        </layout>
+        <child>
+          <object class="tk.Frame" id="padFrame">
+            <property name="background">#dddbec</property>
+            <property name="height">0</property>
+            <property name="width">0</property>
+            <layout manager="pack">
+              <property name="fill">x</property>
+              <property name="pady">7</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Frame" id="musciControlFrame">
+            <property name="background">#d6c6f4</property>
+            <property name="borderwidth">1</property>
+            <property name="height">70</property>
+            <property name="width">0</property>
+            <layout manager="pack">
+              <property name="expand">false</property>
+              <property name="fill">x</property>
+              <property name="padx">15</property>
+              <property name="pady">15</property>
+              <property name="side">bottom</property>
+            </layout>
+            <child>
+              <object class="tk.Frame" id="frame23">
+                <property name="background">#c7b1f0</property>
+                <property name="height">2</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="fill">x</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Frame" id="frame24">
+                <property name="background">#408080</property>
+                <property name="height">100</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="fill">both</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="tk.Frame" id="frame26">
+                    <property name="background">#e8e9f2</property>
+                    <property name="height">80</property>
+                    <property name="width">400</property>
+                    <layout manager="pack">
+                      <property name="expand">true</property>
+                      <property name="fill">both</property>
+                      <property name="side">left</property>
+                    </layout>
+                    <containerlayout manager="pack">
+                      <property name="propagate">False</property>
+                    </containerlayout>
+                    <child>
+                      <object class="tk.Label" id="label3">
+                        <property name="background">#e8e9f2</property>
+                        <property name="text" translatable="yes">label3</property>
+                        <layout manager="pack">
+                          <property name="padx">40</property>
+                          <property name="side">left</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="tk.Frame" id="frame31">
+                        <property name="height">60</property>
+                        <property name="width">300</property>
+                        <layout manager="pack">
+                          <property name="expand">true</property>
+                          <property name="fill">x</property>
+                          <property name="side">left</property>
+                        </layout>
+                        <containerlayout manager="pack">
+                          <property name="propagate">False</property>
+                        </containerlayout>
+                        <child>
+                          <object class="tk.Frame" id="frame32">
+                            <property name="background">#e8e9f2</property>
+                            <property name="height">30</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="expand">true</property>
+                              <property name="fill">both</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <containerlayout manager="pack">
+                              <property name="propagate">False</property>
+                            </containerlayout>
+                            <child>
+                              <object class="tk.Label" id="label1">
+                                <property name="background">#e8e9f2</property>
+                                <property name="font">{@Yu Gothic UI Semilight} 12 {bold}</property>
+                                <property name="foreground">#000000</property>
+                                <property name="text" translatable="yes">Some song name</property>
+                                <layout manager="pack">
+                                  <property name="side">left</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Frame" id="frame33">
+                            <property name="background">#e8e9f2</property>
+                            <property name="height">30</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="expand">true</property>
+                              <property name="fill">both</property>
+                              <property name="side">bottom</property>
+                            </layout>
+                            <containerlayout manager="pack">
+                              <property name="propagate">False</property>
+                            </containerlayout>
+                            <child>
+                              <object class="tk.Label" id="label2">
+                                <property name="background">#e8e9f2</property>
+                                <property name="font">{Yu} 10 {}</property>
+                                <property name="justify">left</property>
+                                <property name="text" translatable="yes">Some song author</property>
+                                <layout manager="pack">
+                                  <property name="side">left</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="tk.Frame" id="frame27">
+                    <property name="background">#e8e9f2</property>
+                    <property name="height">80</property>
+                    <property name="width">200</property>
+                    <layout manager="pack">
+                      <property name="expand">false</property>
+                      <property name="fill">both</property>
+                      <property name="side">left</property>
+                    </layout>
+                    <child>
+                      <object class="tk.Frame" id="frame34">
+                        <property name="background">#e8e9f2</property>
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="expand">true</property>
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="tk.Button" id="previousSongButton">
+                            <property name="activebackground">#e8e9f2</property>
+                            <property name="background">#e8e9f2</property>
+                            <property name="bitmap">gray75</property>
+                            <property name="borderwidth">0</property>
+                            <property name="font">{Yu} 12 {}</property>
+                            <property name="image">icons8-end-30_reverse.png</property>
+                            <property name="text" translatable="yes">button29</property>
+                            <layout manager="pack">
+                              <property name="padx">10</property>
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Button" id="playButton">
+                            <property name="activebackground">#e8e9f2</property>
+                            <property name="background">#e8e9f2</property>
+                            <property name="borderwidth">0</property>
+                            <property name="font">{Yu} 12 {}</property>
+                            <property name="height">30</property>
+                            <property name="image">icons8-circled-play-30.png</property>
+                            <property name="text" translatable="yes">button30</property>
+                            <property name="width">30</property>
+                            <layout manager="pack">
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Button" id="nextSongButton">
+                            <property name="activebackground">#e8e9f2</property>
+                            <property name="background">#e8e9f2</property>
+                            <property name="bitmap">gray75</property>
+                            <property name="borderwidth">0</property>
+                            <property name="font">{Yu} 12 {}</property>
+                            <property name="image">icons8-end-30.png</property>
+                            <property name="text" translatable="yes">button31</property>
+                            <layout manager="pack">
+                              <property name="padx">10</property>
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="tk.Frame" id="frame28">
+                    <property name="background">#e8e9f2</property>
+                    <property name="height">80</property>
+                    <property name="width">400</property>
+                    <layout manager="pack">
+                      <property name="expand">true</property>
+                      <property name="fill">both</property>
+                      <property name="side">left</property>
+                    </layout>
+                    <containerlayout manager="pack">
+                      <property name="propagate">False</property>
+                    </containerlayout>
+                    <child>
+                      <object class="tk.Frame" id="frame35">
+                        <property name="background">#e8e9f2</property>
+                        <property name="height">100</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="padx">40</property>
+                          <property name="side">right</property>
+                        </layout>
+                        <containerlayout manager="pack">
+                          <property name="propagate">False</property>
+                        </containerlayout>
+                        <child>
+                          <object class="tk.Button" id="favouriteButton">
+                            <property name="activebackground">#e8e9f2</property>
+                            <property name="background">#e8e9f2</property>
+                            <property name="bitmap">error</property>
+                            <property name="borderwidth">0</property>
+                            <property name="image">icons8-favorite-30.png</property>
+                            <property name="text" translatable="yes">button32</property>
+                            <layout manager="pack">
+                              <property name="padx">10</property>
+                              <property name="side">right</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Button" id="volumeButton">
+                            <property name="activebackground">#e8e9f2</property>
+                            <property name="background">#e8e9f2</property>
+                            <property name="bitmap">error</property>
+                            <property name="borderwidth">0</property>
+                            <property name="image">icons8-sound-30.png</property>
+                            <property name="justify">center</property>
+                            <property name="text" translatable="yes">button33</property>
+                            <layout manager="pack">
+                              <property name="padx">10</property>
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Scale" id="soundBar">
+                            <property name="activebackground">#c7b1f0</property>
+                            <property name="background">#e8e9f2</property>
+                            <property name="borderwidth">1</property>
+                            <property name="foreground">#c7b1f0</property>
+                            <property name="from_">0</property>
+                            <property name="highlightbackground">#e8e9f2</property>
+                            <property name="highlightcolor">#e8e9f2</property>
+                            <property name="orient">horizontal</property>
+                            <property name="showvalue">false</property>
+                            <property name="sliderrelief">flat</property>
+                            <property name="state">normal</property>
+                            <property name="to">100</property>
+                            <property name="troughcolor">#dddbec</property>
+                            <layout manager="pack">
+                              <property name="expand">true</property>
+                              <property name="fill">x</property>
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Frame" id="sidesFrame">
+            <property name="height">200</property>
+            <property name="width">200</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">both</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="tk.Frame" id="leftFrame">
+                <property name="background">#dddbec</property>
+                <property name="borderwidth">1</property>
+                <property name="height">140</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="fill">y</property>
+                  <property name="side">left</property>
+                </layout>
+                <containerlayout manager="pack">
+                  <property name="propagate">False</property>
+                </containerlayout>
+                <child>
+                  <object class="tk.Frame" id="frame1">
+                    <property name="background">#dddbec</property>
+                    <property name="height">200</property>
+                    <property name="width">200</property>
+                    <layout manager="pack">
+                      <property name="expand">false</property>
+                      <property name="fill">x</property>
+                      <property name="padx">10</property>
+                      <property name="pady">10</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="tk.Label" id="label6">
+                        <property name="activebackground">#dddbec</property>
+                        <property name="background">#dddbec</property>
+                        <property name="image">icons8-musically-30.png</property>
+                        <property name="text" translatable="yes">label6</property>
+                        <layout manager="pack">
+                          <property name="side">left</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="tk.Label" id="label7">
+                        <property name="background">#dddbec</property>
+                        <property name="font">{@Yu Gothic UI Light} 12 {bold}</property>
+                        <property name="text" translatable="yes">LittleLigr MP3</property>
+                        <layout manager="pack">
+                          <property name="side">left</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="tk.Frame" id="frame2">
+                    <property name="background">#dddbec</property>
+                    <property name="borderwidth">1</property>
+                    <property name="height">200</property>
+                    <property name="width">200</property>
+                    <layout manager="pack">
+                      <property name="fill">x</property>
+                      <property name="padx">10</property>
+                      <property name="pady">10</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="tk.Frame" id="frame3">
+                        <property name="background">#dddbec</property>
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="fill">x</property>
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="tk.Label" id="label8">
+                            <property name="background">#dddbec</property>
+                            <property name="font">{Yu} 10 {}</property>
+                            <property name="foreground">#868686</property>
+                            <property name="takefocus">false</property>
+                            <property name="text" translatable="yes">Reccomend</property>
+                            <layout manager="pack">
+                              <property name="expand">false</property>
+                              <property name="padx">10</property>
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="tk.Frame" id="frame5">
+                        <property name="background">#dddbec</property>
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="fill">x</property>
+                          <property name="side">bottom</property>
+                        </layout>
+                        <child>
+                          <object class="tk.Frame" id="frame20">
+                            <property name="background">#dddbec</property>
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="expand">true</property>
+                              <property name="fill">x</property>
+                              <property name="pady">10</property>
+                              <property name="side">bottom</property>
+                            </layout>
+                            <child>
+                              <object class="tk.Button" id="button1">
+                                <property name="anchor">w</property>
+                                <property name="background">#dddbec</property>
+                                <property name="borderwidth">0</property>
+                                <property name="compound">left</property>
+                                <property name="font">{Yu} 12 {}</property>
+                                <property name="highlightbackground">#c7b1f0</property>
+                                <property name="image">icons8-music-album-30_white.png</property>
+                                <property name="padx">12</property>
+                                <property name="relief">ridge</property>
+                                <property name="text" translatable="yes">Albums</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="ipady">7</property>
+                                  <property name="side">left</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Frame" id="frame21">
+                            <property name="background">#dddbec</property>
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="fill">x</property>
+                              <property name="pady">10</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="tk.Button" id="button2">
+                                <property name="anchor">w</property>
+                                <property name="background">#dddbec</property>
+                                <property name="borderwidth">0</property>
+                                <property name="compound">left</property>
+                                <property name="font">{Yu} 12 {}</property>
+                                <property name="image">icons8-musical-notes-30_white.png</property>
+                                <property name="padx">12</property>
+                                <property name="relief">groove</property>
+                                <property name="text" translatable="yes">All songs</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="ipady">7</property>
+                                  <property name="side">left</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Frame" id="frame22">
+                            <property name="background">#dddbec</property>
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="fill">x</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="tk.Button" id="button3">
+                                <property name="anchor">w</property>
+                                <property name="background">#dddbec</property>
+                                <property name="borderwidth">0</property>
+                                <property name="compound">left</property>
+                                <property name="font">{Yu} 12 {}</property>
+                                <property name="image">icons8-favorite-30_white.png</property>
+                                <property name="padx">12</property>
+                                <property name="relief">groove</property>
+                                <property name="text" translatable="yes">Liked</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="ipady">7</property>
+                                  <property name="side">left</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="tk.Frame" id="frame6">
+                        <property name="background">#dddbec</property>
+                        <property name="height">0</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="expand">true</property>
+                          <property name="fill">both</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="tk.Frame" id="frame11">
+                    <property name="background">#dddbec</property>
+                    <property name="borderwidth">1</property>
+                    <property name="height">200</property>
+                    <property name="width">200</property>
+                    <layout manager="pack">
+                      <property name="expand">true</property>
+                      <property name="fill">both</property>
+                      <property name="padx">10</property>
+                      <property name="pady">10</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="tk.Frame" id="frame13">
+                        <property name="background">#dddbec</property>
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="fill">x</property>
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="tk.Label" id="label10">
+                            <property name="background">#dddbec</property>
+                            <property name="font">{Yu} 10 {}</property>
+                            <property name="foreground">#868686</property>
+                            <property name="takefocus">false</property>
+                            <property name="text" translatable="yes">Playlists</property>
+                            <layout manager="pack">
+                              <property name="expand">false</property>
+                              <property name="padx">10</property>
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="tk.Listbox" id="listbox2">
+                        <property name="relief">flat</property>
+                        <layout manager="pack">
+                          <property name="expand">true</property>
+                          <property name="fill">both</property>
+                          <property name="side">bottom</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Frame" id="rightFrame">
+                <property name="background">#dddbec</property>
+                <property name="height">140</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="fill">y</property>
+                  <property name="side">right</property>
+                </layout>
+                <child>
+                  <object class="tk.Frame" id="frame4">
+                    <property name="background">#dddbec</property>
+                    <property name="borderwidth">1</property>
+                    <property name="height">200</property>
+                    <property name="width">200</property>
+                    <layout manager="pack">
+                      <property name="fill">x</property>
+                      <property name="padx">10</property>
+                      <property name="pady">10</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="tk.Frame" id="frame7">
+                        <property name="background">#dddbec</property>
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="fill">x</property>
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="tk.Label" id="label4">
+                            <property name="background">#dddbec</property>
+                            <property name="font">{Yu} 10 {}</property>
+                            <property name="foreground">#868686</property>
+                            <property name="takefocus">false</property>
+                            <property name="text" translatable="yes">Last songs</property>
+                            <layout manager="pack">
+                              <property name="expand">false</property>
+                              <property name="padx">10</property>
+                              <property name="side">left</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="tk.Frame" id="frame8">
+                        <property name="background">#dddbec</property>
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="fill">x</property>
+                          <property name="side">bottom</property>
+                        </layout>
+                        <child>
+                          <object class="tk.Frame" id="frame9">
+                            <property name="background">#dddbec</property>
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="expand">true</property>
+                              <property name="fill">x</property>
+                              <property name="pady">10</property>
+                              <property name="side">bottom</property>
+                            </layout>
+                            <child>
+                              <object class="tk.Button" id="button4">
+                                <property name="anchor">w</property>
+                                <property name="background">#dddbec</property>
+                                <property name="borderwidth">0</property>
+                                <property name="compound">left</property>
+                                <property name="font">{Yu} 12 {}</property>
+                                <property name="highlightbackground">#c7b1f0</property>
+                                <property name="image">icons8-music-album-30_white.png</property>
+                                <property name="padx">12</property>
+                                <property name="relief">ridge</property>
+                                <property name="text" translatable="yes">Albums</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="ipady">7</property>
+                                  <property name="side">left</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Frame" id="frame10">
+                            <property name="background">#dddbec</property>
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="fill">x</property>
+                              <property name="pady">10</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="tk.Button" id="button5">
+                                <property name="anchor">w</property>
+                                <property name="background">#dddbec</property>
+                                <property name="borderwidth">0</property>
+                                <property name="compound">left</property>
+                                <property name="font">{Yu} 12 {}</property>
+                                <property name="image">icons8-musical-notes-30_white.png</property>
+                                <property name="padx">12</property>
+                                <property name="relief">groove</property>
+                                <property name="text" translatable="yes">All songs</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="ipady">7</property>
+                                  <property name="side">left</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Frame" id="frame14">
+                            <property name="background">#dddbec</property>
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="fill">x</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="tk.Button" id="button6">
+                                <property name="anchor">w</property>
+                                <property name="background">#dddbec</property>
+                                <property name="borderwidth">0</property>
+                                <property name="compound">left</property>
+                                <property name="font">{Yu} 12 {}</property>
+                                <property name="image">icons8-favorite-30_white.png</property>
+                                <property name="padx">12</property>
+                                <property name="relief">groove</property>
+                                <property name="text" translatable="yes">Liked</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="ipady">7</property>
+                                  <property name="side">left</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="tk.Frame" id="frame15">
+                        <property name="background">#dddbec</property>
+                        <property name="height">0</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="expand">true</property>
+                          <property name="fill">both</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Frame" id="centerFrame">
+                <property name="background">#d9caf4</property>
+                <property name="borderwidth">1</property>
+                <property name="height">400</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

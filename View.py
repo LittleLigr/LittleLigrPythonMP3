@@ -29,12 +29,15 @@ class AppView(View):
         self.center_frame = self.builder.get_object("centerFrame")
         self._apply_visual_settings(self.builder)
 
+        self.album_label = self.builder.get_object("albumLabel")
+        self.artist_label = self.builder.get_object("artistLabel")
+        self.song_artwork = self.builder.get_object("songArtwork")
         self.menu = self.builder.get_object("menuTree")
+        self.play_button = self.builder.get_object("playButton")
 
         self._generate_tree_style('app.Treeview')
 
         self._generate_columns(self.menu)
-
         self.menu.configure(style='app.Treeview')
 
         self.menu_icons = []
@@ -71,6 +74,12 @@ class AppView(View):
         tree.heading("#1", text="2")
         tree.heading("#1", text="3")
 
+    def fill_music_bar(self, artist, album, artwork):
+        self.album_label.configure(text=album)
+        self.artist_label.configure(text=artist)
+        self.song_artwork.configure(image=artwork)
+        pass
+
 
 class SongsView(View):
     def __init__(self, path, layout_name, master=None):
@@ -103,11 +112,11 @@ class SongsView(View):
         style.configure(name, rowheight=56)
         style.configure(name, font=('Yu Gothic UI Semilight', 14))
 
-    def insert(self, image, fields):
+    def insert(self, image, text, fields):
         if image is None:
-            self.songs_tree.insert("", 'end', values=fields)
+            self.songs_tree.insert("", 'end', values=fields, text = text)
         else:
-            self.songs_tree.insert("", 'end', image=image, values=fields)
+            self.songs_tree.insert("", 'end', image=image, text=text, values=fields)
 
 class SettingsView(View):
     def __init__(self, path, layout_name, master=None):

@@ -79,7 +79,7 @@
                       <property name="propagate">False</property>
                     </containerlayout>
                     <child>
-                      <object class="tk.Label" id="label3">
+                      <object class="tk.Label" id="songArtwork">
                         <property name="background">#e8e9f2</property>
                         <property name="text" translatable="yes">label3</property>
                         <layout manager="pack">
@@ -114,7 +114,7 @@
                               <property name="propagate">False</property>
                             </containerlayout>
                             <child>
-                              <object class="tk.Label" id="label1">
+                              <object class="tk.Label" id="albumLabel">
                                 <property name="background">#e8e9f2</property>
                                 <property name="font">{@Yu Gothic UI Semilight} 12 {bold}</property>
                                 <property name="foreground">#000000</property>
@@ -140,7 +140,7 @@
                               <property name="propagate">False</property>
                             </containerlayout>
                             <child>
-                              <object class="tk.Label" id="label2">
+                              <object class="tk.Label" id="artistLabel">
                                 <property name="background">#e8e9f2</property>
                                 <property name="font">{Yu} 10 {}</property>
                                 <property name="justify">left</property>

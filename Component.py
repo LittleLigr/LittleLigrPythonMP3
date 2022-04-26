@@ -1,11 +1,16 @@
+from abc import ABCMeta
+
 import Controller
 import Model
 import View
+
 
 components = {}
 
 
 class Component:
+    __metaclass_ = ABCMeta
+
     def __init__(self):
         self.view = None
         self.controller = None
@@ -30,8 +35,6 @@ class SongComponent(Component):
         components['song'] = self
 
 
-
-
 class SettingsComponent(Component):
     def __init__(self):
         super().__init__()
@@ -43,11 +46,14 @@ class SettingsComponent(Component):
 
 def init_components():
     AppComponent()
-    SongComponent(components['app'].view.center_frame)
+    songs = SongComponent(components['app'].view.center_frame)
     SettingsComponent()
-
+    songs.model.upload_music()
 
 
 def run():
     components['settings'].controller.hide_view()
     components['app'].view.main_window.mainloop()
+
+
+

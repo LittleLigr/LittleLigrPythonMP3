@@ -34,7 +34,7 @@
           </object>
         </child>
         <child>
-          <object class="tk.Frame" id="musciControlFrame">
+          <object class="tk.Frame" id="musicControlFrame">
             <property name="background">#d6c6f4</property>
             <property name="borderwidth">1</property>
             <property name="height">70</property>
@@ -246,9 +246,17 @@
                           <property name="padx">40</property>
                           <property name="side">right</property>
                         </layout>
-                        <containerlayout manager="pack">
-                          <property name="propagate">False</property>
-                        </containerlayout>
+                        <child>
+                          <object class="tk.Button" id="deleteButton">
+                            <property name="background">#e8e9f2</property>
+                            <property name="image">icons8-remove-30.png</property>
+                            <property name="relief">flat</property>
+                            <property name="text" translatable="yes">button1</property>
+                            <layout manager="pack">
+                              <property name="side">right</property>
+                            </layout>
+                          </object>
+                        </child>
                         <child>
                           <object class="tk.Button" id="favouriteButton">
                             <property name="activebackground">#e8e9f2</property>

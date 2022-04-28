@@ -57,7 +57,7 @@
                   <property name="side">left</property>
                 </layout>
                 <child>
-                  <object class="tk.Entry" id="entry1">
+                  <object class="tk.Entry" id="searchBar">
                     <property name="borderwidth">0</property>
                     <property name="font">{@Yu Gothic UI Semilight} 12 {}</property>
                     <property name="relief">flat</property>

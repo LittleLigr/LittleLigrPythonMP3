@@ -396,7 +396,7 @@
                           <property name="side">top</property>
                         </layout>
                         <child>
-                          <object class="tk.Label" id="label8">
+                          <object class="tk.Label" id="musicLittleLabel">
                             <property name="background">#dddbec</property>
                             <property name="font">{Yu} 10 {}</property>
                             <property name="foreground">#868686</property>

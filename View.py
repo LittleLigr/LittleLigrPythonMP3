@@ -6,6 +6,19 @@ import pygubu
 import tkinter as tk
 from tkinter import ttk
 
+import gettext
+
+_ = None
+
+
+def setup_locale(lang):
+    locale = gettext.translation('locale', localedir='resources/locale', languages=[lang])
+    locale.install()
+    _ = locale.gettext
+
+
+setup_locale('en')
+
 
 class View:
     __metaclass__ = ABCMeta
@@ -18,8 +31,19 @@ class View:
         builder.add_from_file(project_ui)
         builder.connect_callbacks(self)
 
+    def hide_view(self):
+        self.ui.pack_forget()
+
+    def show_view(self):
+        self.ui.pack(expand=True, fill='both', side='top')
+
+    def set_locale(self):
+        pass
+
 
 class AppView(View):
+    pages = []
+
     def __init__(self, path, layout_name):
         super().__init__(path, None)
         self.main_window = self.builder.get_object(layout_name)
@@ -44,6 +68,7 @@ class AppView(View):
         self.volume_button = self.builder.get_object("volumeButton")
         self._silence_on_image = tk.PhotoImage(file="resources/textures/icons8-no-audio-30.png")
         self._silence_off_image = tk.PhotoImage(file="resources/textures/icons8-sound-30.png")
+        self.music_little_label = self.builder.get_object("musicLittleLabel")
 
         self._generate_tree_style('app.Treeview')
 
@@ -53,13 +78,12 @@ class AppView(View):
         self.menu_icons = []
         self.menu_icons.append(tk.PhotoImage(file="resources/textures/icons8-musical-notes-30_white.png"))
         self.menu_icons.append(tk.PhotoImage(file="resources/textures/icons8-favorite-30_white.png"))
-        self.menu_icons.append(tk.PhotoImage(file="resources/textures/icons8-music-album-30_white.png"))
         self.menu_icons.append(tk.PhotoImage(file="resources/textures/icons8-settings-30.png"))
 
-        self.menu.insert("", 'end', image=self.menu_icons[0], text="some text", values=("", "Music"))
-        self.menu.insert("", 'end', image=self.menu_icons[1], values=("", "Favourites"))
-        self.menu.insert("", 'end', image=self.menu_icons[2], values=("", "Albums"))
-        self.menu.insert("", 'end', image=self.menu_icons[3], values=("", "Settings"))
+        self.music_little_label.config(text=_('music'))
+        self.menu.insert('', 'end', image=self.menu_icons[0], values=('', _('music')))
+        self.menu.insert('', 'end', image=self.menu_icons[1], values=('', _('favourites')))
+        self.menu.insert('', 'end', image=self.menu_icons[2], values=('', _('settings')))
 
     def run(self):
         self.main_window.mainloop()
@@ -116,6 +140,26 @@ class AppView(View):
         else:
             self.volume_button.config(image=self._silence_off_image)
 
+    def select_row(self, index):
+        select_row(self.menu, index)
+
+    def _clear_tree(self):
+        self.menu.delete(*self.menu.get_children())
+
+    def set_locale(self):
+        self.music_little_label.config(text=_('music'))
+
+        menu_children = self.menu.get_children()
+        self.menu.item(menu_children[0], values=('', _('music')))
+        self.menu.item(menu_children[1], values=('', _('favourites')))
+        self.menu.item(menu_children[2], values=('', _('settings')))
+
+
+def select_row(tree, index):
+    tree_children = tree.get_children()[index]
+    tree.focus(tree_children)
+    tree.selection_set(tree_children)
+
 
 class SongsView(View):
     def __init__(self, path, layout_name, master=None):
@@ -141,6 +185,8 @@ class SongsView(View):
         self.songs_tree.heading("#1", text="")
         self.songs_tree.heading("#2", text="")
 
+        self.set_locale()
+
     def _generate_tree_style(self, name):
         style = ttk.Style()
         style.theme_use("default")
@@ -154,20 +200,29 @@ class SongsView(View):
         self._clear_tree()
         for index, (album_artist, duration, artwork) in enumerate(music_data):
             if artwork is None:
-                self.songs_tree.insert('', 'end', values=('', album_artist, duration), iid='I' + str(index))
+                self.songs_tree.insert('', 'end', values=('', album_artist, duration), iid='I' + str(index + 1))
             else:
-                self.songs_tree.insert('', 'end', image=artwork, values=('', album_artist, duration), iid='I' + str(index))
+                self.songs_tree.insert('', 'end', image=artwork, values=('', album_artist, duration),
+                                       iid='I' + str(index + 1))
 
     def _clear_tree(self):
         self.songs_tree.delete(*self.songs_tree.get_children())
 
     def select_row(self, index):
-        tree_children = self.songs_tree.get_children()[index]
-        self.songs_tree.focus(tree_children)
-        self.songs_tree.selection_set(tree_children)
+        select_row(self.songs_tree, index)
+
+    def set_locale(self):
+        self.add_music_button.config(text=_('add music'))
 
 
 class SettingsView(View):
     def __init__(self, path, layout_name, master=None):
         super().__init__(path, master)
         self.ui = self.builder.get_object(layout_name, master)
+        self.settings_label = self.builder.get_object('settingsLabel')
+        self.language_button_ru = self.builder.get_object('languageButtonRu')
+        self.language_button_en = self.builder.get_object('languageButtonEn')
+        self.set_locale()
+
+    def set_locale(self):
+        self.settings_label.config(text=_('settings'))

@@ -5,6 +5,10 @@ from tinydb import TinyDB, Query, where
 from tinytag import TinyTag
 import pygame
 
+import View
+
+_app_db = TinyDB("resources/data/app.json")
+
 
 def _read_tag(path):
     tags = TinyTag.get(path, image=True)
@@ -34,9 +38,8 @@ def _prepare_view_fields(fields):
     return album_artist, duration
 
 
-class MusicManager:
+class _MusicManager:
     _music_db = TinyDB("resources/data/music.json")
-    _app_db = TinyDB("resources/data/app.json")
     _shown_music_index = -1
     _shown_music_data = None
     _playing_music_data = None
@@ -46,6 +49,7 @@ class MusicManager:
     _app_view = None
     _song_view = None
     _pause = True
+    _only_favourite_mode = False
 
     _silence = False
     _volume = 0
@@ -58,6 +62,9 @@ class MusicManager:
         self._upload_app_settings()
 
     def next(self):
+        if self._shown_music_data is None:
+            return
+
         if self._shown_music_index + 1 >= len(self._current_music):
             self._select_shown(0)
         else:
@@ -67,6 +74,9 @@ class MusicManager:
         self._fill_music_bar()
 
     def previous(self):
+        if self._shown_music_data is None:
+            return
+
         if self._shown_music_index - 1 < 0:
             self._select_shown(len(self._current_music) - 1)
         else:
@@ -104,7 +114,7 @@ class MusicManager:
 
     def filter(self, filter_seq):
         self._current_filter = filter_seq
-        if filter_seq is not '':
+        if filter_seq != '' or self._only_favourite_mode:
             self._current_music.clear()
             for path, music_data in self._music.items():
                 tags = music_data[0]
@@ -112,13 +122,17 @@ class MusicManager:
                 is_match = is_match or str(tags.artist).__contains__(filter_seq)
                 is_match = is_match or str(tags.genre).__contains__(filter_seq)
                 is_match = is_match or str(tags.year).__contains__(filter_seq)
+                is_match = (is_match and self._only_favourite_mode and music_data[3]) or (is_match and not self._only_favourite_mode)
                 if is_match:
                     self._current_music[path] = music_data
         else:
             self._current_music = self._music.copy()
 
         self._song_view.fill_tree(self._prepare_music_data())
-        self.select(0)
+        self.select(self._shown_music_index)
+
+    def refilter(self):
+        self.filter(self._current_filter)
 
     def _prepare_music_data(self):
         music_data_list = []
@@ -137,6 +151,9 @@ class MusicManager:
         return list(self._current_music.keys())[index]
 
     def favourite(self):
+        if self._shown_music_data is None:
+            return
+
         path = self._get_path_by_id(self._shown_music_index)
         data = Query()
         music_data = self._music_db.search(data.path == path).__getitem__(0)
@@ -146,10 +163,16 @@ class MusicManager:
                              self._music[path][2],
                              not self._music[path][3])
 
+        if self._only_favourite_mode:
+            self._shown_music_index = 0
+
         self.filter(self._current_filter)
         self._fill_music_bar()
 
     def delete(self):
+        if self._shown_music_data is None:
+            return
+
         path = self._get_path_by_id(self._shown_music_index)
         self._music_db.remove(where('path') == path)
         self._music.pop(path)
@@ -157,6 +180,8 @@ class MusicManager:
         self.filter(self._current_filter)
 
     def select(self, index):
+        if index == -1:
+            index = 0
         if index < len(self._current_music.values()):
             self._select_shown(index)
             self._fill_music_bar()
@@ -174,6 +199,9 @@ class MusicManager:
             self._shown_music_data = self._get_data_by_id(index)
 
     def play_reaction(self):
+        if self._shown_music_data is None:
+            return
+
         if self._shown_music_data != self._playing_music_data:
             self._play_music()
             self._pause = False
@@ -202,7 +230,7 @@ class MusicManager:
         self.filter("")
 
     def set_volume(self, volume):
-        self._app_db.update({'volume': volume})
+        _app_db.update({'volume': volume})
         self._app_view.set_volume_bar_value(volume)
         self._volume = volume
         pygame.mixer.music.set_volume(volume / 100)
@@ -210,7 +238,7 @@ class MusicManager:
             self._silence = False
 
     def _upload_app_settings(self):
-        default = self._app_db.all()[0]
+        default = _app_db.all()[0]
         volume = default['volume']
         self.set_volume(volume)
 
@@ -223,5 +251,62 @@ class MusicManager:
             pygame.mixer.music.set_volume(0)
         self._silence = not self._silence
 
+    def favourite_only(self, is_favourite):
+        self._only_favourite_mode = is_favourite
 
-music_manager = MusicManager()
+
+def switch_locale(locale):
+    _app_db.update({'locale': locale})
+    View.setup_locale(locale)
+    app_page_manager.update_text()
+
+
+class _AppPageManager:
+    _current_view_index = -1
+    _app_view = None
+    _menu_views = []
+
+    def init(self, app_view, menu_views, init_view_index):
+        self._app_view = app_view
+        self._menu_views = menu_views
+
+        self._current_view_index = init_view_index
+        self._app_view.select_row(init_view_index)
+
+        default = _app_db.all()[0]
+        lang = default['locale']
+        View.setup_locale(lang)
+
+        app_view.set_locale()
+        [view.set_locale() for view in menu_views]
+
+        for view_index, view in enumerate(self._menu_views):
+            if view_index is not init_view_index:
+                view.hide_view()
+
+    def switch_page(self, index):
+        index = self._special_event(index)
+        self._menu_views[self._current_view_index].hide_view()
+        self._current_view_index = index
+        self._menu_views[self._current_view_index].show_view()
+
+    def _special_event(self, index):
+        if index == 1:
+            print(index)
+            music_manager.favourite_only(True)
+            music_manager.refilter()
+            return 0
+        elif index > 1:
+            return index - 1
+
+        music_manager.favourite_only(False)
+        music_manager.refilter()
+        return index
+
+    def update_text(self):
+        self._app_view.set_locale()
+        [view.set_locale() for view in self._menu_views]
+
+
+music_manager = _MusicManager()
+app_page_manager = _AppPageManager()

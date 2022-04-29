@@ -12,6 +12,7 @@ _ = None
 
 
 def setup_locale(lang):
+    global _
     locale = gettext.translation('locale', localedir='resources/locale', languages=[lang])
     locale.install()
     _ = locale.gettext
